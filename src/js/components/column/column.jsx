@@ -11,7 +11,7 @@ export default class Column extends React.Component {
   render() {
     return (
       <div className={`hello col-${this.props.width}`}>
-        <h1>Column</h1>
+        {this.props.children}
       </div>
     );
   }
