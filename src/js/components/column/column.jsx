@@ -10,7 +10,7 @@ export default class Column extends React.Component {
 
   render() {
     return (
-      <div className={`hello col-${this.props.width}`}>
+      <div className={`column col-${this.props.width}`}>
         {this.props.children}
       </div>
     );

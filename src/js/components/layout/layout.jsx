@@ -67,8 +67,6 @@ export default class Layout extends React.Component {
   }
 
   onLayoutSelect(event) {
-    console.log(event.target.value);
-
     this.setState({
       layoutChoice: event.target.value
     });
@@ -88,8 +86,7 @@ export default class Layout extends React.Component {
     return (
       <div class="container">
         <div className="row">
-
-          <h5>Choose a layout:&nbsp; </h5>
+          <h5 className="mr-2">Layout:</h5>
 
           <select className="mb-5" onChange={(event) => this.onLayoutSelect(event)}>
             <option value="0">Version 0</option>
@@ -98,8 +95,17 @@ export default class Layout extends React.Component {
           </select>
         </div>
 
-        <div className="row">
+        <div className="row mb-5">
           {guts}
+        </div>
+
+        <div className="row">
+          <div className="col-12">
+            <h5>Remote Configuration:</h5>
+          </div>
+          <div className="col-12">
+            <pre>{JSON.stringify(layoutConfigs[this.state.layoutChoice], null, 2)}</pre>
+          </div>
         </div>
       </div>
     );
