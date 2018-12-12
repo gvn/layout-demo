@@ -10,7 +10,7 @@ export default class TopSites extends React.Component {
 
   render() {
     return (
-      <div className="top-sites p-3 m-3">
+      <div className="component top-sites p-3 m-3">
         <h4>Top Sites</h4>
       </div>
     );

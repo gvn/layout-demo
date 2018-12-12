@@ -3,10 +3,16 @@ import React from 'react';
 import Column from '../column/column.jsx';
 import Component from '../component/component.jsx';
 import TopSites from '../top-sites/top-sites.jsx';
+import BestThisWeek from '../best-this-week/best-this-week.jsx';
+import Headlines from '../headlines/headlines.jsx';
+import Trending from '../trending/trending.jsx';
 
 let componentHash = {
   Component: Component,
-  TopSites: TopSites
+  TopSites: TopSites,
+  BestThisWeek: BestThisWeek,
+  Headlines: Headlines,
+  Trending: Trending
 };
 
 let layoutConfigs = [
@@ -16,46 +22,46 @@ let layoutConfigs = [
       children: [`TopSites`]
     },
     {
+      width: 12,
+      children: [`Headlines`]
+    },
+    {
       width: 8,
-      children: []
+      children: [`Trending`]
     },
     {
       width: 4,
-      children: [`Component`, `Component`]
+      children: [`BestThisWeek`]
+    }
+  ],
+
+  [
+    {
+      width: 8,
+      children: [`TopSites`, `Headlines`]
+    },
+    {
+      width: 4,
+      children: [`Trending`, `BestThisWeek`]
     }
   ],
 
   [
     {
       width: 12,
-      children: []
+      children: [`TopSites`]
     },
     {
       width: 4,
-      children: []
+      children: [`Trending`]
     },
     {
-      width: 8,
-      children: []
-    }
-  ],
-
-  [
-    {
-      width: 12,
-      children: []
+      width: 4,
+      children: [`BestThisWeek`]
     },
     {
-      width: 6,
-      children: []
-    },
-    {
-      width: 6,
-      children: []
-    },
-    {
-      width: 12,
-      children: []
+      width: 4,
+      children: [`Headlines`]
     }
   ]
 ];
@@ -101,7 +107,7 @@ export default class Layout extends React.Component {
     });
 
     return (
-      <div className="container">
+      <div className="layout container">
         <div className="row">
           <h5 className="mr-2">Layout:</h5>
 
