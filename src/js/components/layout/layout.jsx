@@ -101,7 +101,7 @@ export default class Layout extends React.Component {
 
         <div className="row">
           <div className="col-12">
-            <h5>Remote Configuration:</h5>
+            <h5>Remote Configuration JSON:</h5>
           </div>
           <div className="col-12">
             <pre>{JSON.stringify(layoutConfigs[this.state.layoutChoice], null, 2)}</pre>
