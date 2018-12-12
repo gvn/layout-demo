@@ -2,12 +2,18 @@ import './layout.scss';
 import React from 'react';
 import Column from '../column/column.jsx';
 import Component from '../component/component.jsx';
+import TopSites from '../top-sites/top-sites.jsx';
+
+let componentHash = {
+  Component: Component,
+  TopSites: TopSites
+};
 
 let layoutConfigs = [
   [
     {
       width: 12,
-      children: []
+      children: [`TopSites`]
     },
     {
       width: 8,
@@ -15,7 +21,7 @@ let layoutConfigs = [
     },
     {
       width: 4,
-      children: []
+      children: [`Component`, `Component`]
     }
   ],
 
@@ -76,15 +82,26 @@ export default class Layout extends React.Component {
     let guts = [];
 
     layoutConfigs[this.state.layoutChoice].forEach((layout, index) => {
+      let children = [];
+
+      if (!layout.children.length) {
+        // Add generic component if none are specified
+        children[0] = React.createElement(Component, {key:0});
+      } else {
+        children = layout.children.map((child, index) => {
+          return React.createElement(componentHash[child], {key: index});
+        })
+      }
+
       guts.push(
         <Column key={index} width={layout.width}>
-          <Component></Component>
+          { children }
         </Column>
       );
     });
 
     return (
-      <div class="container">
+      <div className="container">
         <div className="row">
           <h5 className="mr-2">Layout:</h5>
 
