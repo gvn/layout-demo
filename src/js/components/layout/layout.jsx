@@ -19,7 +19,14 @@ let layoutConfigs = [
   [
     {
       width: 12,
-      components: [`TopSites`]
+      components: [
+        {
+          type: `TopSites`,
+          props: {
+            sitesToShow: 6
+          }
+        }
+      ]
     },
     {
       width: 12,
@@ -95,7 +102,14 @@ export default class Layout extends React.Component {
         components[0] = React.createElement(Component, {key:0});
       } else {
         components = layout.components.map((child, index) => {
-          return React.createElement(componentHash[child], {key: index});
+          if (typeof child === `string`) {
+            return React.createElement(componentHash[child], {key: index});
+          } else {
+            // Compile props for the component
+            let props = Object.assign({key:index}, child.props);
+
+            return React.createElement(componentHash[child.type], props);
+          }
         })
       }
 
