@@ -19,49 +19,49 @@ let layoutConfigs = [
   [
     {
       width: 12,
-      children: [`TopSites`]
+      components: [`TopSites`]
     },
     {
       width: 12,
-      children: [`Headlines`]
+      components: [`Headlines`]
     },
     {
       width: 8,
-      children: [`Trending`]
+      components: [`Trending`]
     },
     {
       width: 4,
-      children: [`BestThisWeek`]
+      components: [`BestThisWeek`]
     }
   ],
 
   [
     {
       width: 8,
-      children: [`TopSites`, `Headlines`]
+      components: [`TopSites`, `Headlines`]
     },
     {
       width: 4,
-      children: [`Trending`, `BestThisWeek`]
+      components: [`Trending`, `BestThisWeek`]
     }
   ],
 
   [
     {
       width: 12,
-      children: [`TopSites`]
+      components: [`TopSites`]
     },
     {
       width: 4,
-      children: [`Trending`]
+      components: [`Trending`]
     },
     {
       width: 4,
-      children: [`BestThisWeek`]
+      components: [`BestThisWeek`]
     },
     {
       width: 4,
-      children: [`Headlines`]
+      components: [`Headlines`]
     }
   ]
 ];
@@ -88,20 +88,20 @@ export default class Layout extends React.Component {
     let guts = [];
 
     layoutConfigs[this.state.layoutChoice].forEach((layout, index) => {
-      let children = [];
+      let components = [];
 
-      if (!layout.children.length) {
-        // Add generic component if none are specified
-        children[0] = React.createElement(Component, {key:0});
+      if (!layout.components.length) {
+        // Add single generic component if none are specified
+        components[0] = React.createElement(Component, {key:0});
       } else {
-        children = layout.children.map((child, index) => {
+        components = layout.components.map((child, index) => {
           return React.createElement(componentHash[child], {key: index});
         })
       }
 
       guts.push(
         <Column key={index} width={layout.width}>
-          { children }
+          { components }
         </Column>
       );
     });
