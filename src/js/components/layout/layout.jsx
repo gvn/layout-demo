@@ -132,7 +132,7 @@ export default class Layout extends React.Component {
           </select>
         </div>
 
-        <div className="row mb-5">
+        <div className="grid mb-5 ">
           {guts}
         </div>
 

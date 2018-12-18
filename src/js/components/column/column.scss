@@ -1,4 +1,19 @@
 .column {
   border: 1px dotted rgba(255, 192, 203, 0.9);
-  transition: all 400ms ease-in-out;
+}
+
+$columns: 12;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat($columns, (100% / $columns));
+}
+
+@while $columns > 0 {
+  .column-#{$columns} {
+    grid-column-start: auto;
+    grid-column-end: span $columns;
+  }
+
+  $columns: $columns - 1;
 }
