@@ -5,7 +5,7 @@
   "scripts": {
     "start": "rm -rf dist/* && webpack-dev-server",
     "build": "rm -rf dist/* && webpack",
-    "deploy": "git branch -D gh-pages; git checkout -b gh-pages && npm run build && mv dist/* ./ && git add . && git commit -m 'BUILD' && git push origin gh-pages -f"
+    "deploy": "git branch -D gh-pages; git checkout -b gh-pages && npm run build && git add . && git commit -m 'BUILD' && git push origin gh-pages -f"
   },
   "author": "gvn",
   "devDependencies": {
