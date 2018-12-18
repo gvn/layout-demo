@@ -6,7 +6,7 @@ $columns: 12;
 
 .grid {
   display: grid;
-  grid-template-columns: repeat($columns, (100% / $columns));
+  grid-template-columns: repeat($columns, 1fr);
 }
 
 @while $columns > 0 {
